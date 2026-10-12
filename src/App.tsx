@@ -89,7 +89,7 @@ function Shell() {
   return (
     <div className="app-bg min-h-screen lg:flex">
       <Sidebar page={page} go={go} />
-      <main className="min-w-0 flex-1 px-4 pb-32 pt-5 sm:px-6 lg:px-10 lg:pb-12 lg:pt-8">
+      <main className="min-w-0 flex-1 px-4 pb-32 pt-[calc(1.25rem+env(safe-area-inset-top,0px))] sm:px-6 lg:px-10 lg:pb-12 lg:pt-8">
         <div className="mx-auto max-w-6xl">
           <AnimatePresence mode="wait">
             <motion.div key={page} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }}>

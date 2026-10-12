@@ -28,9 +28,22 @@ export function loadState(): AppState {
     if (!raw) return defaultState();
     const parsed = JSON.parse(raw) as Partial<AppState>;
     return { ...defaultState(), ...parsed, version: 1 };
-  } catch {
+  } catch (err) {
+    // Unreadable data would be overwritten by the next save: keep a copy so it can be recovered.
+    console.error('Sauvegarde illisible, copie conservée sous', `${KEY}:corrupt`, err);
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) localStorage.setItem(`${KEY}:corrupt`, raw);
+    } catch (copyErr) {
+      console.error('Copie de la sauvegarde illisible impossible', copyErr);
+    }
     return defaultState();
   }
+}
+
+/** Ask the browser not to evict our data under storage pressure (best effort, no-op if unsupported). */
+export function requestPersistentStorage(): void {
+  navigator.storage?.persist?.().catch((err) => console.warn('storage.persist() refusé', err));
 }
 
 export function saveState(s: AppState): boolean {

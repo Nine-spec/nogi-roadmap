@@ -1,4 +1,5 @@
 import { ALL_OBJECTIVES, ALL_TECHNIQUES, PHASES } from '../data/roadmap';
+import { todayIso } from './storage';
 import type { AppState, Skill, Status } from '../types';
 
 export const statusValue = (s: Status | undefined) => (s === 'mastered' ? 1 : s === 'progress' ? 0.5 : 0);
@@ -29,7 +30,7 @@ export function journalStats(s: AppState): JournalStats {
     run = i > 0 && days[i] === days[i - 1] + 1 ? run + 1 : 1;
     longest = Math.max(longest, run);
   }
-  const today = Math.floor(Date.now() / 86400000);
+  const today = dayNum(todayIso());
   let current = 0;
   if (days.length && today - days[days.length - 1] <= 1) {
     current = 1;
