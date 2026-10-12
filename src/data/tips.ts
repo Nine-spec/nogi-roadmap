@@ -1,0 +1,142 @@
+export type TipCategory = 'mental' | 'wrestling' | 'escapes' | 'submissions' | 'tactique' | 'conditioning';
+
+export const TIP_CATEGORIES: { id: TipCategory; label: string; icon: string }[] = [
+  { id: 'mental', label: 'Mental', icon: '🏆' },
+  { id: 'wrestling', label: 'Wrestling', icon: '🥊' },
+  { id: 'escapes', label: 'Escapes', icon: '🛡' },
+  { id: 'submissions', label: 'Submissions', icon: '⚔' },
+  { id: 'tactique', label: 'Tactique', icon: '🎯' },
+  { id: 'conditioning', label: 'Conditioning', icon: '💪' },
+];
+
+const raw: Record<TipCategory, string[]> = {
+  mental: [
+    'Les débutants regardent les soumissions, les avancés regardent les transitions.',
+    'Tape tôt, tape souvent. Une épaule blessée coûte trois mois de tapis.',
+    'Ton ego est ton pire partenaire d\'entraînement. Laisse-le au vestiaire.',
+    'Perdre une position contre plus fort que toi, c\'est de l\'information gratuite.',
+    'Choisis un seul objectif par séance et juge ta séance uniquement là-dessus.',
+    'La régularité bat l\'intensité : trois séances par semaine pendant un an valent mieux qu\'un mois à fond.',
+    'Ne compare pas ton mois 4 avec le mois 40 de quelqu\'un d\'autre.',
+    'Quand tu es écrasé, respire par le nez et cherche le prochain petit gain.',
+    'Pose une question au coach après chaque cours. Une seule, mais précise.',
+    'Note tes erreurs : celles que tu écris, tu les répètes moins.',
+    'Un rolling n\'est pas un combat. Teste des choses qui risquent d\'échouer.',
+    'Roule avec ceux qui te battent et avec ceux que tu bats. Les deux t\'apprennent autre chose.',
+    'La fatigue rend lâche. Prépare ta tête autant que ton cardio.',
+    'Être à l\'aise dans l\'inconfort est une compétence qui s\'entraîne.',
+    'Les plateaux sont normaux. C\'est souvent juste avant un saut de niveau.',
+    'Célèbre les petites victoires : une sortie réussie compte autant qu\'une soumission.',
+    'Reste curieux. Demande toujours « pourquoi ça marche ? » plutôt que « comment ? ».',
+  ],
+  wrestling: [
+    'Priorise les underhooks.',
+    'Le changement de niveau précède toujours le shoot. Pas de niveau, pas de takedown.',
+    'Tête haute, hanches sous toi : la posture gagne les échanges de mains.',
+    'Contrôle les poignets avant de chercher les jambes.',
+    'Un faux shoot crée la réaction qui ouvre le vrai.',
+    'Sur un double leg, ta tête va à l\'extérieur, jamais au milieu (risque de guillotine).',
+    'Le snap down est le meilleur ami du front headlock. Fais-le tomber vers l\'avant.',
+    'Sprawl en jetant les hanches au sol, pas en reculant les pieds.',
+    'Un single leg se finit debout, la jambe coincée entre tes genoux.',
+    'Avec ton gabarit, le body lock est une arme : colle-toi et fais-le marcher.',
+    'Bouge en cercle : un adversaire qui pivote est un adversaire qui ne shoote pas.',
+    'Les mains d\'abord, le corps ensuite. Gagne le grip avant d\'engager.',
+    'Après un takedown, ne relâche pas : passe directement sa garde pendant qu\'il est désorganisé.',
+    'Ne recule jamais en ligne droite vers le bord du tapis.',
+    'Garde tes coudes collés au corps pour bloquer ses underhooks.',
+    'L\'arm drag t\'ouvre le dos plus souvent qu\'on ne le croit.',
+    'Un bon wrestler en No-Gi décide où le combat se passe.',
+  ],
+  escapes: [
+    'Si tu es aplati, reconstruis ta structure avant d\'exploser.',
+    'Frames d\'abord, mouvement de hanche ensuite. Jamais l\'inverse.',
+    'Ne pousse pas avec les bras tendus : c\'est une invitation à l\'armbar.',
+    'Ta priorité sous side control : empêcher la mount, pas sortir.',
+    'Le shrimp crée l\'espace, le genou le remplit.',
+    'Sous la mount, garde tes coudes collés. Coude ouvert, bras perdu.',
+    'Pour sortir du dos : protège le cou, puis fais tomber tes épaules du côté du crochet bas.',
+    'Combine bridge et elbow escape : chacun ouvre l\'autre.',
+    'Respire. Les sorties ratées viennent souvent d\'une explosion trop tôt.',
+    'Récupère la demi-garde avant de penser à la garde complète.',
+    'En turtle, coudes contre les genoux : aucun espace pour les crochets.',
+    'Rentre ton menton dès que quelqu\'un approche ton cou.',
+    'Sur une guillotine, passe du côté du bras piégé et mets ton épaule sur lui.',
+    'Contre la kimura, attrape ton short ou ta jambe et garde le coude collé.',
+    'Leg locks : cache ton talon et garde ton genou aligné avec ses hanches.',
+    'Le meilleur escape est celui que tu n\'as pas besoin de faire : défends la position avant.',
+    'Travaille tes sorties en début de séance quand tu es frais, pas seulement en fin de rolling.',
+  ],
+  submissions: [
+    'Le contrôle précède la soumission.',
+    'Ne chasse pas les soumissions, crée-les.',
+    'Position avant soumission : si tu la rates, tu dois rester au-dessus.',
+    'RNC : biceps sous le menton, ta main sur ton propre biceps, coudes serrés.',
+    'Guillotine : la profondeur du poignet compte plus que la force des bras.',
+    'Arm triangle : passe du côté opposé au bras piégé avant de serrer.',
+    'Kimura : colle son poignet à sa hanche avant de tourner.',
+    'Americana : glisse le coude vers sa hanche, ne lève pas son bras.',
+    'Serre progressivement. Les finitions brutales blessent et ne marchent pas mieux.',
+    'Si ta soumission n\'avance pas en 10 secondes, change d\'attaque ou améliore ta position.',
+    'Enchaîne les attaques : kimura vers back take, guillotine vers front headlock.',
+    'Menton caché ? Écrase la mâchoire ou passe à la body triangle et attends.',
+    'High elbow guillotine : coude vers le plafond, tire vers ton épaule opposée.',
+    'La meilleure soumission est celle que tu places 100 fois sur des débutants.',
+    'Lâche dès qu\'il tape. La confiance de tes partenaires vaut plus qu\'une victoire.',
+    'Une soumission maîtrisée doit marcher depuis au moins deux positions.',
+    'Apprends les défenses de tes soumissions favorites : tu comprendras mieux comment les finir.',
+  ],
+  tactique: [
+    'En No-Gi, celui qui contrôle le rythme contrôle le combat.',
+    'Ton gameplan doit tenir sur une carte : takedown, passe, contrôle, finition.',
+    'Contre plus lourd, bouge ; contre plus léger, écrase.',
+    'Les mains vides sont des mains qui perdent. Ayez toujours un grip ou une frame.',
+    'Commence chaque rolling debout si tu veux devenir bon en lutte.',
+    'Ne laisse pas un adversaire s\'installer dans sa garde favorite.',
+    'Si tu es au-dessus, ta tête est une arme : colle-la à la sienne.',
+    'Garde tes coudes à l\'intérieur, toujours.',
+    'Observe les ceintures bleues : elles gagnent rarement grâce à une technique rare, mais grâce aux bases bien faites.',
+    'Après une erreur, reviens à une position neutre au lieu de forcer.',
+    'Choisis 3 positions de référence et rends-les inconfortables pour tout le monde.',
+    'Un bon passage de garde commence par contrôler les hanches, pas les jambes.',
+    'Back control > mount en No-Gi : moins de risques de sortir par le bridge.',
+    'Quand tu passes, change d\'angle à chaque fois qu\'il frame.',
+    'Pense en chaînes : si A échoue, B doit être prêt.',
+    'Les 30 dernières secondes d\'un round décident souvent du résultat. Garde de l\'énergie.',
+    'Pendant les drills, cherche la vitesse de transition, pas la vitesse brute.',
+  ],
+  conditioning: [
+    'Le cardio du jiu-jitsu se construit sur le tapis, mais la force se construit en salle.',
+    'Deux séances de musculation par semaine suffisent : squat, deadlift, tractions, presses.',
+    'Renforce ta nuque et ton grip : ce sont les premiers à lâcher en No-Gi.',
+    'Fais travailler tes hanches : mobilité = garde et sorties plus efficaces.',
+    'Le sommeil est ton meilleur supplément de récupération.',
+    'Hydrate-toi avant la séance, pas seulement après.',
+    'Échauffe-toi même si le cours commence en retard.',
+    'Des intervalles de 5 min d\'effort / 1 min de repos imitent la réalité d\'un round.',
+    'Travaille ton cardio à basse intensité aussi : il t\'aide à récupérer entre les rounds.',
+    'Douche directement après le tapis et lave ton rashguard à chaque fois.',
+    'Écoute les petites douleurs avant qu\'elles deviennent des blessures.',
+    'Protéines à chaque repas pour récupérer et garder ton poids de forme.',
+    'Mobilité des épaules 10 minutes par jour pour prévenir les blessures liées aux kimuras.',
+    'Renforce tes genoux et chevilles pour les leg locks et la lutte.',
+    'Un deload d\'une semaine tous les 6 à 8 semaines évite les blessures de surcharge.',
+    'Planifie tes séances dures loin de tes séances de musculation lourdes.',
+    'Être fort aide, mais la technique gaspille moins d\'énergie que la force.',
+  ],
+};
+
+export interface Tip {
+  id: number;
+  category: TipCategory;
+  text: string;
+}
+
+export const TIPS: Tip[] = (Object.keys(raw) as TipCategory[]).flatMap((cat, ci) =>
+  raw[cat].map((text, i) => ({ id: ci * 100 + i, category: cat, text })),
+);
+
+export function tipOfTheDay(date = new Date()): Tip {
+  const key = date.getFullYear() * 1000 + Math.floor((date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 86400000);
+  return TIPS[(key * 7919) % TIPS.length];
+}

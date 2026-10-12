@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Layout: app shell — sidebar (desktop) / bottom tab bar (mobile), single scrolling content column.
+   Single dark look by design (dark mode par défaut, palette imposée). */
+:root {
+  color-scheme: dark;
+  --ink: #050816;
+  --card: #0f172a;
+  --card2: #1e293b;
+  --primary: #2563eb;
+  --secondary: #38bdf8;
+  --accent: #22d3ee;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+}
+
+html,
+body {
+  background: var(--ink);
+  color: var(--text);
+}
+
+body {
+  font-family: 'DM Sans', system-ui, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+/* Ambient mat glow behind everything */
+.app-bg {
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(37, 99, 235, 0.22), transparent 60%),
+    radial-gradient(700px 400px at -10% 30%, rgba(34, 211, 238, 0.08), transparent 60%),
+    var(--ink);
+}
+
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/[0.07] bg-card/70 shadow-premium backdrop-blur-xl;
+  }
+  .glass-hi {
+    @apply rounded-2xl border border-secondary/20 bg-gradient-to-b from-card2/80 to-card/80 shadow-glow backdrop-blur-xl;
+  }
+  .label {
+    @apply font-display text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-slate-400;
+  }
+  .h-section {
+    @apply font-display text-3xl font-bold uppercase tracking-wide text-white sm:text-4xl;
+    text-wrap: balance;
+  }
+  .num {
+    @apply font-mono tabular-nums;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/70 disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white shadow-[0_8px_24px_-8px_rgba(37,99,235,.8)] hover:bg-blue-500;
+  }
+  .btn-ghost {
+    @apply btn border border-white/10 bg-white/[0.03] text-slate-200 hover:border-secondary/40 hover:bg-white/[0.06];
+  }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-ink/60 px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:border-secondary/60 focus:outline-none focus:ring-2 focus:ring-secondary/30;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium transition;
+  }
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,8 @@
+services:
+  nogi-roadmap:
+    build: .
+    image: nogi-roadmap:latest
+    container_name: nogi-roadmap
+    restart: unless-stopped
+    ports:
+      - "8095:80"
